@@ -1,2 +1,2 @@
 # gluon-packages
-Düsseldorf Gluon Package Repository
+Freifunk Frankenberg Gluon Package Repository forked from ddorf

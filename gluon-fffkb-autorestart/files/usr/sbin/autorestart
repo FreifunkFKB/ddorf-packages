@@ -3,5 +3,5 @@
 if [ "$(pidof sysupgrade)" = "" ]; then
     logger -t autorestart Node will be restarted in 5 seconds
     sleep 5
-    reboot
+    reboot -f
 fi

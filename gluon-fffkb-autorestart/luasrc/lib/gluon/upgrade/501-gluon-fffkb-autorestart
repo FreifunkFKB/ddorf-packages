@@ -1,0 +1,22 @@
+#!/usr/bin/lua
+
+local site = require 'gluon.site_config'
+local fs = require 'nixio.fs'
+
+-- Initialize the pseudo random number generator
+math.randomseed(os.time())
+math.random(); math.random(); math.random()
+
+local interval = site.autorestart.interval
+local timeframe = site.autorestart.endhour - site.autorestart.starthour - 1
+local hour = site.autorestart.starthour + math.random(0,timeframe)
+local minute = math.random(0, 59)
+local dayofweek = "*"
+
+if interval == "weekly" then
+	dayofweek = math.random(1,7)
+end
+
+local crontab_line = string.format('%s %s * * %s /usr/sbin/autorestart\n', tostring(minute), tostring(hour), tostring(dayofweek))
+
+fs.writefile('/usr/lib/micron.d/autorestart', crontab_line)
