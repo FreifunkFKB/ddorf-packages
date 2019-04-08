@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=gluon-autorestart
+PKG_NAME:=gluon-fffkb-autorestart
 PKG_VERSION:=4
 PKG_RELEASE:=$(GLUON_BRANCH)
 
@@ -9,7 +9,7 @@ PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
 include $(TOPDIR)/../package/gluon.mk
 
 
-define Package/gluon-autorestart
+define Package/gluon-fffkb-autorestart
   SECTION:=gluon
   CATEGORY:=Gluon
   DEPENDS:=+micrond
@@ -24,14 +24,14 @@ define Build/Compile
 	$(call GluonSrcDiet,./luasrc,$(PKG_BUILD_DIR)/luadest/)
 endef
 
-define Package/gluon-autorestart/install
+define Package/gluon-fffkb-autorestart/install
 	$(CP) ./files/* $(1)/
 	$(CP) $(PKG_BUILD_DIR)/luadest/* $(1)/
 endef
 
-define Package/gluon-autorestart/postinst
+define Package/gluon-fffkb-autorestart/postinst
 #!/bin/sh
 $(call GluonCheckSite,check_site.lua)
 endef
 
-$(eval $(call BuildPackage,gluon-autorestart))
+$(eval $(call BuildPackage,gluon-fffkb-autorestart))
